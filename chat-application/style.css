@@ -1,0 +1,782 @@
+/* General body styling */
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #e5e5e5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+
+/* Container styling for the chat application */
+
+.app-container {
+    width: 100%;
+    max-width: 600px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    border-radius: 0;
+    box-shadow: none;
+    overflow: hidden;
+}
+
+
+/* Sidebar styling */
+
+.sidebar {
+    width: 100%;
+    background-color: #f7f7f7;
+    border-bottom: 1px solid #ddd;
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar-header {
+    padding: 15px;
+    background-color: #007bff;
+    color: #fff;
+    text-align: center;
+}
+
+.chat-list {
+    flex-grow: 1;
+    padding: 10px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    background-color: #f9f9f9;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: black;
+}
+
+.chat-list-item {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    cursor: pointer;
+    border-bottom: 1px solid #ccc;
+    position: relative;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.chat-list-item:hover,
+.chat-list-item.active {
+    background-color: #e6f7ff;
+}
+
+.chat-list-item img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.chat-info {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.chat-info h3 {
+    margin: 0;
+    font-size: 16px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.chat-info p {
+    margin: 0;
+    color: #888;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+
+/* Sidebar Header */
+
+.sidebar-header {
+    position: relative;
+    padding: 10px 0;
+    background-color: #007bff;
+    color: #fff;
+    text-align: center;
+    /* Ensure the sidebar header stays on top */
+}
+
+.sidebar-header button {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 1.2em;
+    cursor: pointer;
+    z-index: 2;
+    /* Ensure the button stays on top */
+}
+
+.sidebar-options {
+    display: none;
+    position: absolute;
+    top: 55px;
+    right: 10px;
+    /* Adjusted to align with the button */
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    width: 220px;
+    /* Set a fixed width for consistent alignment */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 3;
+    /* Bring the menu in front of other elements */
+    color: black;
+}
+
+.sidebar-options ul {
+    list-style: none;
+    margin: 0;
+    padding: 10px 0;
+}
+
+.sidebar-options ul li {
+    padding: 10px 20px;
+    /* Increased padding for better alignment */
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    display: flex;
+    align-items: center;
+    /* Aligns icon and text vertically */
+}
+
+.sidebar-options ul li:hover {
+    background-color: #f0f0f0;
+}
+
+.sidebar-options ul li i {
+    margin-right: 10px;
+    min-width: 20px;
+    /* Ensures icons are aligned */
+    text-align: center;
+    /* Centers the icons */
+}
+
+
+/* Show sidebar options on button click */
+
+.sidebar-header button:focus+.sidebar-options,
+.sidebar-options:hover {
+    display: block;
+}
+
+.chat-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-grow: 1;
+}
+
+.chat-info h3 {
+    margin: 0;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.chat-info p {
+    margin: 5px 0 0 0;
+    color: #666;
+    font-size: 12px;
+}
+
+
+/* Chat window styling */
+
+.chat-window {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+}
+
+.chat-window.active {
+    transform: translateX(0);
+}
+
+.chat-header {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    position: relative;
+}
+
+.chat-header img {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.chat-header-actions {
+    display: flex;
+    margin-left: auto;
+}
+
+.chat-header-actions button {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 1.2em;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+.chat-header-actions button:hover {
+    color: #ddd;
+}
+
+.chat-messages {
+    flex-grow: 1;
+    padding: 10px;
+    overflow-y: auto;
+    background-color: #f9f9f9;
+    background-image: url("images/CHAT BG.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.chat-message {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 15px;
+    max-width: 80%;
+    position: relative;
+}
+
+.chat-message.received {
+    background-color: rgba(225, 240, 255, 0.8);
+    align-self: flex-start;
+}
+
+.chat-message.sent {
+    background-color: rgba(209, 255, 209, 0.8);
+    align-self: flex-end;
+}
+
+.chat-message .time {
+    font-size: 10px;
+    color: #888;
+    margin-left: 10px;
+    flex-shrink: 0;
+    align-self: flex-end;
+}
+
+
+/* Chat input styling */
+
+.chat-input {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    background-color: #fff;
+    border-top: 1px solid #ddd;
+}
+
+.chat-input input[type="text"] {
+    flex-grow: 1;
+    padding: 8px;
+    border-radius: 15px;
+    border: 1px solid #ddd;
+    margin-right: 10px;
+    outline: none;
+}
+
+.chat-input button {
+    padding: 8px 12px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    margin-right: 5px;
+}
+
+.chat-input button:hover {
+    background-color: #0056b3;
+}
+
+
+/* Back button styling */
+
+.chat-header .back-btn {
+    display: none;
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 1.5em;
+    margin-right: 10px;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 50%;
+    transition: background-color 0.3s ease;
+}
+
+.chat-header .back-btn:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+
+/* Dropdown Menu Styling */
+
+.more-options-dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    right: 0;
+    background-color: #fff;
+    min-width: 150px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    border-radius: 5px;
+}
+
+.dropdown-menu a {
+    color: #333;
+    padding: 10px 15px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-menu a:hover {
+    background-color: #f1f1f1;
+}
+
+
+/* Show dropdown when the button is clicked */
+
+.more-options-dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+
+/* Show the back button on mobile screens */
+
+@media (max-width: 2000px) {
+    .chat-header .back-btn {
+        display: inline-block;
+    }
+}
+
+
+/* Responsive adjustments */
+
+@media (min-width: 768px) {
+    .app-container {
+        max-width: 2000px;
+        flex-direction: row;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+    .sidebar {
+        width: 30%;
+        border-bottom: none;
+        border-right: 1px solid #ddd;
+    }
+    .chat-window {
+        width: 70%;
+        transform: translateX(0);
+    }
+}
+
+
+/* General Modal Styling */
+
+.modal {
+    display: none;
+    /* Hidden by default */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    /* Dark background with transparency */
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    /* Make sure it's above other elements */
+}
+
+
+/* Modal Content Styling */
+
+.modal-content {
+    background-color: #fff;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 600px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    position: relative;
+}
+
+
+/* Modal Header Styling */
+
+.modal-content h2 {
+    margin-top: 0;
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+}
+
+
+/* Close Button Styling */
+
+.modal-content .close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    font-size: 1.5em;
+    color: #333;
+    cursor: pointer;
+}
+
+
+/* User List Styling */
+
+.user-list {
+    max-height: 300px;
+    overflow-y: auto;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.user-list .user-item {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    cursor: pointer;
+}
+
+.user-list .user-item:last-child {
+    border-bottom: none;
+}
+
+.user-list .user-item img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.user-list .user-item input[type="checkbox"] {
+    margin-right: 10px;
+}
+
+
+/* Group Icon Selection */
+
+.group-icon-selection {
+    margin-bottom: 20px;
+}
+
+.group-icon-selection label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.group-icon-selection input[type="file"] {
+    display: block;
+}
+
+
+/* Modal Actions (Buttons) */
+
+.modal-actions {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.modal-actions button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.modal-actions button:hover {
+    background-color: #0056b3;
+}
+
+.modal-actions .cancel-btn {
+    background-color: #ccc;
+}
+
+.modal-actions .cancel-btn:hover {
+    background-color: #aaa;
+}
+
+
+/* CSS for vertical nav-bar/*
+.app-container {
+    display: flex;
+    height: 100vh;
+}
+
+/* Vertical Navigation Bar */
+
+.vertical-nav {
+    width: 60px;
+    background-color: #007bff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 10px;
+}
+
+.nav-btn {
+    background-color: transparent;
+    border: none;
+    color: #ecf0f1;
+    font-size: 24px;
+    margin-bottom: 20px;
+    cursor: pointer;
+    align-items: center;
+}
+
+.nav-btn:hover {
+    color: #1abc9c;
+}
+
+
+/* Sidebar and Chat Window Styles */
+
+.sidebar {
+    width: 300px;
+    background-color: #34495e;
+    color: #ecf0f1;
+}
+
+.chat-window {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.chat-header {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    background-color: #007bff;
+    color: #ecf0f1;
+}
+
+.chat-messages {
+    flex-grow: 1;
+    padding: 10px;
+    background-color: #ecf0f1;
+    overflow-y: auto;
+}
+
+.chat-input {
+    display: flex;
+    padding: 10px;
+    background-color: #007bff;
+}
+
+.chat-input input {
+    flex-grow: 1;
+    padding: 10px;
+    border: none;
+    border-radius: 20px;
+    margin-right: 10px;
+}
+
+.chat-input button {
+    background-color: transparent;
+    border: none;
+    color: #ecf0f1;
+    font-size: 24px;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+.chat-input button:hover {
+    color: #1abc9c;
+}
+
+
+/* Default vertical navbar for desktop */
+
+.vertical-nav {
+    display: flex;
+    flex-direction: column;
+    width: 60px;
+    background-color: #007bff;
+}
+
+.nav-btn {
+    padding: 15px;
+    border: none;
+    background: none;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+    display: block;
+}
+
+
+/* Media query for mobile devices */
+
+@media (max-width: 426px) {
+    .vertical-nav {
+        flex-direction: row;
+        /* Change the direction to row */
+        width: 100%;
+        /* Expand the navbar to full width */
+        height: 60px;
+        /* Adjust height for the navbar */
+    }
+    .nav-btn {
+        flex-grow: 1;
+        /* Make each button expand evenly */
+        text-align: center;
+        /* Center the icons */
+        padding: 10px;
+        /* Adjust padding for better spacing */
+    }
+    .app-container {
+        flex-direction: column;
+        /* Adjust the main container layout */
+    }
+    .sidebar {
+        width: 100%;
+        /* Sidebar takes full width on mobile */
+    }
+    .chat-window {
+        flex-grow: 1;
+        /* Chat window takes remaining space */
+        height: calc(100% - 60px);
+        /* Adjust height to account for navbar */
+    }
+}
+
+
+/* Chat input styling adjustments for mobile */
+
+.chat-input {
+    display: flex;
+    align-items: center;
+    padding: 5px;
+    /* Reduced padding */
+    background-color: #fff;
+    border-top: 1px solid #ddd;
+}
+
+.chat-input input[type="text"] {
+    flex-grow: 1;
+    padding: 5px;
+    /* Reduced padding */
+    border-radius: 15px;
+    border: 1px solid #ddd;
+    margin-right: 5px;
+    /* Reduced margin */
+    outline: none;
+}
+
+.chat-input button {
+    padding: 5px 8px;
+    /* Reduced padding */
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    font-size: 20px;
+    /* Reduced font size */
+    margin-right: 2px;
+    /* Reduced margin */
+}
+
+.chat-input button:hover {
+    background-color: #0056b3;
+}
+
+@media (max-width: 768px) {
+    .chat-input button {
+        font-size: 18px;
+        /* Further reduce font size for smaller screens */
+        padding: 4px 6px;
+        /* Further reduce padding */
+        margin-right: 2px;
+        /* Further reduce margin */
+    }
+    .chat-input input[type="text"] {
+        padding: 4px;
+        /* Further reduce padding */
+    }
+}
+
+
+/* style.css */
+
+.more-options-dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: white;
+    border: 1px solid #ddd;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.dropdown-menu a {
+    display: block;
+    padding: 8px 16px;
+    text-decoration: none;
+    color: black;
+}
+
+.dropdown-menu a:hover {
+    background-color: #f1f1f1;
+}
